@@ -834,7 +834,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   const btn = this.querySelector('[type=submit]');
   const inputs = this.querySelectorAll('input, textarea');
 
-  btn.innerHTML = '<span>Sending...</span>';
+  btn.innerHTML = `<span>${lang === 'ar' ? 'جاري الإرسال...' : 'Sending...'}</span>`;
   btn.disabled = true;
   btn.style.opacity = '0.7';
 
@@ -846,7 +846,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     headers: { 'Accept': 'application/json' }
   }).then(res => {
     if (res.ok) {
-      btn.innerHTML = '<span>✅ Message Sent!</span>';
+      btn.innerHTML = `<span>${lang === 'ar' ? '✅ تم الإرسال!' : '✅ Message Sent!'}</span>`;
       btn.style.background = 'var(--p4)';
       btn.style.opacity = '1';
       inputs.forEach(i => i.value = '');
@@ -860,7 +860,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
       throw new Error('Server error');
     }
   }).catch(() => {
-    btn.innerHTML = '<span>❌ Failed. Try Again</span>';
+    btn.innerHTML = `<span>${lang === 'ar' ? '❌ فشل الإرسال. حاول مجدداً' : '❌ Failed. Try Again'}</span>`;
     btn.style.background = '#ef4444';
     btn.style.opacity = '1';
     btn.disabled = false;
