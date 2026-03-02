@@ -263,6 +263,10 @@ section{padding:96px 0;position:relative;z-index:2}
 .form-input{width:100%;padding:11px 15px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--r-sm);color:var(--text);font-family:inherit;font-size:.9rem;transition:all .2s;resize:vertical}
 .form-input:focus{outline:none;border-color:var(--p1);box-shadow:0 0 0 3px rgba(167,139,250,.1)}
 .form-input::placeholder{color:var(--muted)}
+.form-input.error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.1)}
+.form-input.success{border-color:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.1)}
+.form-error{font-size:.75rem;color:#ef4444;margin-top:5px;display:none;font-weight:600}
+.form-error.show{display:block}
 
 /* SEND BUTTON - LIGHT THEME GREEN */
 [data-theme="light"] .btn-primary{background:linear-gradient(135deg,#16a34a,#22c55e);box-shadow:0 8px 32px rgba(22,163,74,.3)}
@@ -732,9 +736,21 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
       </div>
       <div class="contact-form-card reveal-r">
         <form id="contact-form">
-          <div class="form-group"><label class="form-label" data-lang="form_name">Name</label><input type="text" name="name" class="form-input" placeholder="Your name" required></div>
-          <div class="form-group"><label class="form-label" data-lang="form_email">Email</label><input type="email" name="email" class="form-input" placeholder="your@email.com" required></div>
-          <div class="form-group"><label class="form-label" data-lang="form_message">Message</label><textarea name="message" class="form-input" rows="5" placeholder="Tell me about your project..." required></textarea></div>
+          <div class="form-group">
+            <label class="form-label" data-lang="form_name">Name</label>
+            <input type="text" name="name" id="field-name" class="form-input" placeholder="Your name">
+            <span class="form-error" id="err-name"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-lang="form_email">Email</label>
+            <input type="email" name="email" id="field-email" class="form-input" placeholder="your@email.com">
+            <span class="form-error" id="err-email"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-lang="form_message">Message</label>
+            <textarea name="message" id="field-message" class="form-input" rows="5" placeholder="Tell me about your project..."></textarea>
+            <span class="form-error" id="err-message"></span>
+          </div>
           <button type="submit" class="btn btn-primary btn-full"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><span data-lang="form_send">Send Message</span></button>
         </form>
       </div>
@@ -828,12 +844,151 @@ document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=
   if(es){ es.href = gmailUrl; es.target = '_blank'; es.onclick = function(){ window.open(gmailUrl,'_blank'); }; }
 })();
 
-// CONTACT FORM with Formspree
+// CONTACT FORM with Formspree + Validation
+const validationMessages = {
+  en: {
+    name_required: 'Name is required.',
+    name_short:    'Name must be at least 10 characters.',
+    name_long:     'Name must be less than 50 characters.',
+    name_invalid:  'Name should contain letters only.',
+    email_required:'Email is required.',
+    email_invalid: 'Please enter a valid email address.',
+    email_short:   'Email username must be at least 10 characters before @.',
+    msg_required:  'Message is required.',
+    msg_short:     'Message must be at least 50 characters.',
+    msg_long:      'Message must be less than 1000 characters.',
+  },
+  ar: {
+    name_required: 'الاسم مطلوب.',
+    name_short:    'الاسم يجب أن يكون 10 أحرف على الأقل.',
+    name_long:     'الاسم يجب أن يكون أقل من 50 حرفاً.',
+    name_invalid:  'الاسم يجب أن يحتوي على حروف فقط.',
+    email_required:'البريد الإلكتروني مطلوب.',
+    email_invalid: 'يرجى إدخال بريد إلكتروني صحيح.',
+    email_short:   'اسم المستخدم في الإيميل يجب أن يكون 10 أحرف على الأقل قبل @.',
+    msg_required:  'الرسالة مطلوبة.',
+    msg_short:     'الرسالة يجب أن تكون 50 حرفاً على الأقل.',
+    msg_long:      'الرسالة يجب أن تكون أقل من 1000 حرف.',
+  }
+};
+
+function showError(fieldId, errId, msg) {
+  const field = document.getElementById(fieldId);
+  const err   = document.getElementById(errId);
+  field.classList.add('error');
+  field.classList.remove('success');
+  err.textContent = msg;
+  err.classList.add('show');
+}
+
+function showSuccess(fieldId, errId) {
+  const field = document.getElementById(fieldId);
+  const err   = document.getElementById(errId);
+  field.classList.remove('error');
+  field.classList.add('success');
+  err.classList.remove('show');
+}
+
+function clearField(fieldId, errId) {
+  const field = document.getElementById(fieldId);
+  const err   = document.getElementById(errId);
+  field.classList.remove('error','success');
+  err.classList.remove('show');
+}
+
+function validateForm() {
+  const m = validationMessages[lang] || validationMessages.en;
+  let valid = true;
+
+  // Name
+  const name = document.getElementById('field-name').value.trim();
+  if (!name) {
+    showError('field-name','err-name', m.name_required); valid = false;
+  } else if (name.length < 10) {
+    showError('field-name','err-name', m.name_short); valid = false;
+  } else if (name.length > 50) {
+    showError('field-name','err-name', m.name_long); valid = false;
+  } else if (!/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(name)) {
+    showError('field-name','err-name', m.name_invalid); valid = false;
+  } else {
+    showSuccess('field-name','err-name');
+  }
+
+  // Email
+  const email = document.getElementById('field-email').value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailUser = email.split('@')[0];
+  if (!email) {
+    showError('field-email','err-email', m.email_required); valid = false;
+  } else if (!emailRegex.test(email)) {
+    showError('field-email','err-email', m.email_invalid); valid = false;
+  } else if (emailUser.length < 10) {
+    showError('field-email','err-email', m.email_short); valid = false;
+  } else {
+    showSuccess('field-email','err-email');
+  }
+
+  // Message
+  const msg = document.getElementById('field-message').value.trim();
+  if (!msg) {
+    showError('field-message','err-message', m.msg_required); valid = false;
+  } else if (msg.length < 50) {
+    showError('field-message','err-message', m.msg_short); valid = false;
+  } else if (msg.length > 1000) {
+    showError('field-message','err-message', m.msg_long); valid = false;
+  } else {
+    showSuccess('field-message','err-message');
+  }
+
+  return valid;
+}
+
+// Live validation on input & blur
+['field-name','field-email','field-message'].forEach(id => {
+  const errId = 'err-' + id.replace('field-','');
+  document.getElementById(id).addEventListener('blur', () => {
+    validateField(id, errId);
+  });
+  document.getElementById(id).addEventListener('input', () => {
+    if (document.getElementById(id).classList.contains('error')) {
+      validateField(id, errId);
+    }
+  });
+});
+
+function validateField(fieldId, errId) {
+  const m = validationMessages[lang] || validationMessages.en;
+  if (fieldId === 'field-name') {
+    const name = document.getElementById('field-name').value.trim();
+    if (!name) { showError('field-name','err-name', m.name_required); }
+    else if (name.length < 10) { showError('field-name','err-name', m.name_short); }
+    else if (name.length > 50) { showError('field-name','err-name', m.name_long); }
+    else if (!/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(name)) { showError('field-name','err-name', m.name_invalid); }
+    else { showSuccess('field-name','err-name'); }
+  }
+  if (fieldId === 'field-email') {
+    const email = document.getElementById('field-email').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailUser = email.split('@')[0];
+    if (!email) { showError('field-email','err-email', m.email_required); }
+    else if (!emailRegex.test(email)) { showError('field-email','err-email', m.email_invalid); }
+    else if (emailUser.length < 10) { showError('field-email','err-email', m.email_short); }
+    else { showSuccess('field-email','err-email'); }
+  }
+  if (fieldId === 'field-message') {
+    const msg = document.getElementById('field-message').value.trim();
+    if (!msg) { showError('field-message','err-message', m.msg_required); }
+    else if (msg.length < 50) { showError('field-message','err-message', m.msg_short); }
+    else if (msg.length > 1000) { showError('field-message','err-message', m.msg_long); }
+    else { showSuccess('field-message','err-message'); }
+  }
+}
+
 document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const btn = this.querySelector('[type=submit]');
-  const inputs = this.querySelectorAll('input, textarea');
+  if (!validateForm()) return;
 
+  const btn = this.querySelector('[type=submit]');
   btn.innerHTML = `<span>${lang === 'ar' ? 'جاري الإرسال...' : 'Sending...'}</span>`;
   btn.disabled = true;
   btn.style.opacity = '0.7';
@@ -849,16 +1004,17 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
       btn.innerHTML = `<span>${lang === 'ar' ? '✅ تم الإرسال!' : '✅ Message Sent!'}</span>`;
       btn.style.background = 'var(--p4)';
       btn.style.opacity = '1';
-      inputs.forEach(i => i.value = '');
+      ['field-name','field-email','field-message'].forEach(id => {
+        document.getElementById(id).value = '';
+        clearField(id, 'err-' + id.replace('field-',''));
+      });
       setTimeout(() => {
         btn.innerHTML = '<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><span data-lang="form_send">Send Message</span>';
         btn.style.background = '';
         btn.disabled = false;
         setLang(lang);
       }, 3500);
-    } else {
-      throw new Error('Server error');
-    }
+    } else { throw new Error('Server error'); }
   }).catch(() => {
     btn.innerHTML = `<span>${lang === 'ar' ? '❌ فشل الإرسال. حاول مجدداً' : '❌ Failed. Try Again'}</span>`;
     btn.style.background = '#ef4444';
