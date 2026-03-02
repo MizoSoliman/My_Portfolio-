@@ -151,7 +151,28 @@ section{padding:96px 0;position:relative;z-index:2}
 .proj-link:hover{background:var(--p1);color:#fff;border-color:var(--p1)}
 .proj-links{display:flex;gap:8px;flex-wrap:wrap}
 
-/* ====== CERTIFICATES ====== */
+/* ====== TECHNICAL SKILLS SECTION ====== */
+.tech-skills-section{background:var(--bg)}
+.ts-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+.ts-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:all .3s}
+.ts-card:hover{border-color:var(--p1);box-shadow:0 0 40px rgba(167,139,250,.1)}
+.ts-card-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.ts-card-ico{width:42px;height:42px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ts-card-ico .icon{width:20px;height:20px}
+.ts-card-title{font-size:.95rem;font-weight:800;letter-spacing:.02em}
+.ts-tags{display:flex;flex-wrap:wrap;gap:8px}
+.ts-tag{padding:5px 13px;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:.03em;border:1px solid}
+.ts-tag.purple{background:rgba(167,139,250,.1);color:var(--p1);border-color:rgba(167,139,250,.25)}
+.ts-tag.blue{background:rgba(96,165,250,.1);color:var(--p2);border-color:rgba(96,165,250,.25)}
+.ts-tag.green{background:rgba(52,211,153,.1);color:var(--p4);border-color:rgba(52,211,153,.25)}
+.ts-tag.pink{background:rgba(244,114,182,.1);color:var(--p3);border-color:rgba(244,114,182,.25)}
+.soft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.soft-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px;display:flex;align-items:center;gap:14px;transition:all .3s}
+.soft-card:hover{border-color:var(--p1);transform:translateY(-4px);box-shadow:0 12px 40px rgba(167,139,250,.12)}
+.soft-ico{width:44px;height:44px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.soft-ico .icon{width:20px;height:20px}
+.soft-label{font-size:.85rem;font-weight:700;line-height:1.4}
+@media(max-width:768px){.ts-grid{grid-template-columns:1fr}.soft-grid{grid-template-columns:1fr 1fr}}
 .certs-section{background:var(--surface)}
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 
@@ -309,6 +330,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
   <div class="nav-menu" id="nav-menu">
     <a class="nav-link" href="#home" data-lang="nav_home">Home</a>
     <a class="nav-link" href="#about" data-lang="nav_about">About</a>
+    <a class="nav-link" href="#skills" data-lang="nav_skills">Skills</a>
     <a class="nav-link" href="#projects" data-lang="nav_projects">Projects</a>
     <a class="nav-link" href="#certificates" data-lang="nav_cert">Certificates</a>
     <a class="nav-link" href="#contact" data-lang="nav_contact">Contact</a>
@@ -376,6 +398,127 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
         <div class="skill-row"><div class="skill-ico si4"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span></div><div class="skill-info"><div class="skill-name">Generative AI & LLMs</div><div class="skill-bar-bg"><div class="skill-bar" data-w=".75"></div></div></div><span class="skill-pct">75%</span></div>
         <div class="skill-row"><div class="skill-ico si5"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span></div><div class="skill-info"><div class="skill-name">Data Science & EDA</div><div class="skill-bar-bg"><div class="skill-bar" data-w=".90"></div></div></div><span class="skill-pct">90%</span></div>
         <div class="skill-row"><div class="skill-ico si6"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span></div><div class="skill-info"><div class="skill-name">Python & SQL</div><div class="skill-bar-bg"><div class="skill-bar" data-w=".92"></div></div></div><span class="skill-pct">92%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICAL SKILLS -->
+<section id="skills" class="tech-skills-section">
+  <div class="wrap">
+    <span class="s-eyebrow">Expertise</span>
+    <h2 class="s-title reveal">Technical <span class="grad-text">Skills</span></h2>
+    <p class="s-desc reveal">Technologies and tools I work with daily to build intelligent solutions.</p>
+
+    <div class="ts-grid reveal">
+      <!-- Programming Languages -->
+      <div class="ts-card">
+        <div class="ts-card-header">
+          <div class="ts-card-ico si1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span></div>
+          <span class="ts-card-title">Programming Languages</span>
+        </div>
+        <div class="ts-tags">
+          <span class="ts-tag purple">Python</span>
+          <span class="ts-tag purple">SQL</span>
+          <span class="ts-tag purple">C++</span>
+          <span class="ts-tag purple">Java</span>
+          <span class="ts-tag purple">JavaScript</span>
+        </div>
+      </div>
+
+      <!-- Libraries & Tools -->
+      <div class="ts-card">
+        <div class="ts-card-header">
+          <div class="ts-card-ico si2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span></div>
+          <span class="ts-card-title">Libraries & Tools</span>
+        </div>
+        <div class="ts-tags">
+          <span class="ts-tag blue">Pandas</span>
+          <span class="ts-tag blue">NumPy</span>
+          <span class="ts-tag blue">Plotly</span>
+          <span class="ts-tag blue">Matplotlib</span>
+          <span class="ts-tag blue">Seaborn</span>
+          <span class="ts-tag blue">Streamlit</span>
+          <span class="ts-tag blue">Scikit-learn</span>
+          <span class="ts-tag blue">TensorFlow</span>
+          <span class="ts-tag blue">PyTorch</span>
+          <span class="ts-tag blue">Keras</span>
+          <span class="ts-tag blue">OpenCV</span>
+          <span class="ts-tag blue">Hugging Face</span>
+          <span class="ts-tag blue">LangChain</span>
+          <span class="ts-tag blue">XGBoost</span>
+          <span class="ts-tag blue">NLTK</span>
+        </div>
+      </div>
+
+      <!-- Environments & Platforms -->
+      <div class="ts-card" style="grid-column:1/-1">
+        <div class="ts-card-header">
+          <div class="ts-card-ico si4"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span></div>
+          <span class="ts-card-title">Environments & Platforms</span>
+        </div>
+        <div class="ts-tags">
+          <span class="ts-tag green">VS Code</span>
+          <span class="ts-tag green">Anaconda</span>
+          <span class="ts-tag green">Google Colab</span>
+          <span class="ts-tag green">GitHub</span>
+          <span class="ts-tag green">Git</span>
+          <span class="ts-tag green">Kaggle</span>
+          <span class="ts-tag green">PyCharm</span>
+          <span class="ts-tag green">IntelliJ</span>
+          <span class="ts-tag green">Jupyter Notebook</span>
+          <span class="ts-tag green">Docker</span>
+          <span class="ts-tag green">Linux</span>
+        </div>
+      </div>
+
+      <!-- AI / ML Domains -->
+      <div class="ts-card" style="grid-column:1/-1">
+        <div class="ts-card-header">
+          <div class="ts-card-ico si3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></span></div>
+          <span class="ts-card-title">AI / ML Domains</span>
+        </div>
+        <div class="ts-tags">
+          <span class="ts-tag pink">Machine Learning</span>
+          <span class="ts-tag pink">Deep Learning</span>
+          <span class="ts-tag pink">Computer Vision</span>
+          <span class="ts-tag pink">Natural Language Processing</span>
+          <span class="ts-tag pink">Generative AI</span>
+          <span class="ts-tag pink">LLMs & Prompt Engineering</span>
+          <span class="ts-tag pink">Transfer Learning</span>
+          <span class="ts-tag pink">Data Science & EDA</span>
+          <span class="ts-tag pink">Feature Engineering</span>
+          <span class="ts-tag pink">Model Deployment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft Skills -->
+    <h3 class="s-title reveal" style="font-size:1.5rem;margin-bottom:24px">Soft <span class="grad-text">Skills</span></h3>
+    <div class="soft-grid reveal">
+      <div class="soft-card">
+        <div class="soft-ico si1"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span></div>
+        <span class="soft-label">Strong Communication Skills</span>
+      </div>
+      <div class="soft-card">
+        <div class="soft-ico si2"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span></div>
+        <span class="soft-label">Explaining Complex Concepts Clearly</span>
+      </div>
+      <div class="soft-card">
+        <div class="soft-ico si4"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
+        <span class="soft-label">Task Management & Teamwork</span>
+      </div>
+      <div class="soft-card">
+        <div class="soft-ico si3"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span></div>
+        <span class="soft-label">Analytical & Critical Thinking</span>
+      </div>
+      <div class="soft-card">
+        <div class="soft-ico si5"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span></div>
+        <span class="soft-label">Continuous Learning & Adaptability</span>
+      </div>
+      <div class="soft-card">
+        <div class="soft-ico si6"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span></div>
+        <span class="soft-label">Problem Solving Under Pressure</span>
       </div>
     </div>
   </div>
@@ -650,8 +793,8 @@ function closeLb(){document.getElementById('lightbox').classList.remove('open');
 
 // LANG
 const T={
-  en:{nav_home:"Home",nav_about:"About",nav_projects:"Projects",nav_cert:"Certificates",nav_contact:"Contact",hero_line1:"Data Scientist",hero_line2:"& ML Engineer",hero_desc:"Hi, I'm Mazin Yaser — transforming complex data into intelligent solutions. Specialized in ML, Deep Learning, Computer Vision & Generative AI.",btn_projects:"View Projects",btn_contact:"Contact Me",about_p1:"I'm Mazin Yaser, a student at the Faculty of Computers and Artificial Intelligence, Egyptian E-Learning University (EELU), specializing in the AI track. Passionate about Artificial Intelligence and Data Science, with more than one year of hands-on experience as a Data Scientist and a strong focus on continuous learning and growth.",about_p2:"During the past year, I worked on multiple datasets and delivered around three end-to-end projects, covering the full cycle from coding to deployment. Currently studying Deep Learning to strengthen my expertise. Completed professional courses such as Data Science at Epsilon AI, Machine Learning at ITI, AI Training at Zewail City, Deep Learning training — and now Generative AI Training at the Digital Egyptian Pioneers Institute (DEPI).",proj1_title:"Melbourne Houses Price Prediction",proj1_desc:"Complete end-to-end ML solution from raw data analysis to an interactive Streamlit web app. Predicts house prices in Melbourne using Kaggle data.",proj2_title:"ASL Alphabet Recognition",proj2_desc:"CNN-based Deep Learning model classifying 36 ASL gesture classes — 26 letters (A–Z) and 10 digits (0–9).",proj3_title:"Advanced Snake Game with AI Mode",proj3_desc:"Greedy Best-First Search AI, dynamic difficulty (Easy/Normal/Hard), golden fruits, high-score saving & theme switching.",proj4_title:"Vehicle Insurance Fraud Detection",proj4_desc:"End-to-end ML pipeline with Streamlit UI to detect fraudulent vehicle insurance claims using XGBoost.",proj5_title:"Plant Disease Detection",proj5_desc:"Deep Learning (EfficientNetB4 Transfer Learning) to classify plant leaf diseases with high accuracy.",code_btn:"Source Code",form_name:"Name",form_email:"Email",form_message:"Message",form_send:"Send Message"},
-  ar:{nav_home:"الرئيسية",nav_about:"نبذة",nav_projects:"المشاريع",nav_cert:"الشهادات",nav_contact:"تواصل",hero_line1:"مهندس علوم بيانات",hero_line2:"وتعلم آلي",hero_desc:"مرحباً، أنا مازن ياسر — متخصص في تحويل البيانات إلى حلول ذكية. خبرة في ML والتعلم العميق والرؤية الحاسوبية والذكاء الاصطناعي التوليدي.",btn_projects:"تصفح المشاريع",btn_contact:"تواصل معي",about_p1:"أنا مازن ياسر، طالب في كلية الحاسبات والذكاء الاصطناعي بالجامعة المصرية للتعلم الإلكتروني (EELU)، تخصص مسار الذكاء الاصطناعي. شغوف بالذكاء الاصطناعي وعلوم البيانات، ولدي أكثر من سنة من الخبرة العملية كعالم بيانات مع تركيز قوي على التعلم المستمر والتطور.",about_p2:"خلال العام الماضي، عملت على مجموعات بيانات متعددة وأنجزت حوالي ثلاثة مشاريع متكاملة من البداية للنشر. أدرس حالياً Deep Learning لتعزيز خبرتي. أتممت دورات احترافية في علوم البيانات بـ Epsilon AI، وتعلم الآلة في ITI، وتدريب AI في جامعة زويل، وتدريب Deep Learning — وأنتسب حالياً لتدريب Generative AI في مبادرة رواد مصر الرقمية (DEPI).",proj1_title:"التنبؤ بأسعار المنازل في ملبورن",proj1_desc:"حل ML متكامل من تحليل البيانات الخام إلى تطبيق ويب تفاعلي بـ Streamlit للتنبؤ بأسعار العقارات.",proj2_title:"التعرف على أبجدية لغة الإشارة الأمريكية",proj2_desc:"نموذج Deep Learning بـ CNN لتصنيف 36 فئة إيماءة — 26 حرفاً (A–Z) و10 أرقام (0–9).",proj3_title:"لعبة الثعبان المتقدمة بالذكاء الاصطناعي",proj3_desc:"خوارزمية Greedy Best-First Search، مستويات صعوبة ديناميكية، فواكه ذهبية، وحفظ أعلى نتيجة.",proj4_title:"كشف الاحتيال في تأمين السيارات",proj4_desc:"مشروع ML متكامل مع واجهة Streamlit للكشف عن الاحتيال في مطالبات التأمين باستخدام XGBoost.",proj5_title:"كشف أمراض النباتات",proj5_desc:"Deep Learning بـ EfficientNetB4 وTransfer Learning لتصنيف أمراض النباتات بدقة عالية.",code_btn:"الكود",form_name:"الاسم",form_email:"البريد الإلكتروني",form_message:"الرسالة",form_send:"إرسال"}
+  en:{nav_home:"Home",nav_about:"About",nav_skills:"Skills",nav_projects:"Projects",nav_cert:"Certificates",nav_contact:"Contact",hero_line1:"Data Scientist",hero_line2:"& ML Engineer",hero_desc:"Hi, I'm Mazin Yaser — transforming complex data into intelligent solutions. Specialized in ML, Deep Learning, Computer Vision & Generative AI.",btn_projects:"View Projects",btn_contact:"Contact Me",about_p1:"I'm Mazin Yaser, a student at the Faculty of Computers and Artificial Intelligence, Egyptian E-Learning University (EELU), specializing in the AI track. Passionate about Artificial Intelligence and Data Science, with more than one year of hands-on experience as a Data Scientist and a strong focus on continuous learning and growth.",about_p2:"During the past year, I worked on multiple datasets and delivered around three end-to-end projects, covering the full cycle from coding to deployment. Currently studying Deep Learning to strengthen my expertise. Completed professional courses such as Data Science at Epsilon AI, Machine Learning at ITI, AI Training at Zewail City, Deep Learning training — and now Generative AI Training at the Digital Egyptian Pioneers Institute (DEPI).",proj1_title:"Melbourne Houses Price Prediction",proj1_desc:"Complete end-to-end ML solution from raw data analysis to an interactive Streamlit web app. Predicts house prices in Melbourne using Kaggle data.",proj2_title:"ASL Alphabet Recognition",proj2_desc:"CNN-based Deep Learning model classifying 36 ASL gesture classes — 26 letters (A–Z) and 10 digits (0–9).",proj3_title:"Advanced Snake Game with AI Mode",proj3_desc:"Greedy Best-First Search AI, dynamic difficulty (Easy/Normal/Hard), golden fruits, high-score saving & theme switching.",proj4_title:"Vehicle Insurance Fraud Detection",proj4_desc:"End-to-end ML pipeline with Streamlit UI to detect fraudulent vehicle insurance claims using XGBoost.",proj5_title:"Plant Disease Detection",proj5_desc:"Deep Learning (EfficientNetB4 Transfer Learning) to classify plant leaf diseases with high accuracy.",code_btn:"Source Code",form_name:"Name",form_email:"Email",form_message:"Message",form_send:"Send Message"},
+  ar:{nav_home:"الرئيسية",nav_about:"نبذة",nav_skills:"المهارات",nav_projects:"المشاريع",nav_cert:"الشهادات",nav_contact:"تواصل",hero_line1:"مهندس علوم بيانات",hero_line2:"وتعلم آلي",hero_desc:"مرحباً، أنا مازن ياسر — متخصص في تحويل البيانات إلى حلول ذكية. خبرة في ML والتعلم العميق والرؤية الحاسوبية والذكاء الاصطناعي التوليدي.",btn_projects:"تصفح المشاريع",btn_contact:"تواصل معي",about_p1:"أنا مازن ياسر، طالب في كلية الحاسبات والذكاء الاصطناعي بالجامعة المصرية للتعلم الإلكتروني (EELU)، تخصص مسار الذكاء الاصطناعي. شغوف بالذكاء الاصطناعي وعلوم البيانات، ولدي أكثر من سنة من الخبرة العملية كعالم بيانات مع تركيز قوي على التعلم المستمر والتطور.",about_p2:"خلال العام الماضي، عملت على مجموعات بيانات متعددة وأنجزت حوالي ثلاثة مشاريع متكاملة من البداية للنشر. أدرس حالياً Deep Learning لتعزيز خبرتي. أتممت دورات احترافية في علوم البيانات بـ Epsilon AI، وتعلم الآلة في ITI، وتدريب AI في جامعة زويل، وتدريب Deep Learning — وأنتسب حالياً لتدريب Generative AI في مبادرة رواد مصر الرقمية (DEPI).",proj1_title:"التنبؤ بأسعار المنازل في ملبورن",proj1_desc:"حل ML متكامل من تحليل البيانات الخام إلى تطبيق ويب تفاعلي بـ Streamlit للتنبؤ بأسعار العقارات.",proj2_title:"التعرف على أبجدية لغة الإشارة الأمريكية",proj2_desc:"نموذج Deep Learning بـ CNN لتصنيف 36 فئة إيماءة — 26 حرفاً (A–Z) و10 أرقام (0–9).",proj3_title:"لعبة الثعبان المتقدمة بالذكاء الاصطناعي",proj3_desc:"خوارزمية Greedy Best-First Search، مستويات صعوبة ديناميكية، فواكه ذهبية، وحفظ أعلى نتيجة.",proj4_title:"كشف الاحتيال في تأمين السيارات",proj4_desc:"مشروع ML متكامل مع واجهة Streamlit للكشف عن الاحتيال في مطالبات التأمين باستخدام XGBoost.",proj5_title:"كشف أمراض النباتات",proj5_desc:"Deep Learning بـ EfficientNetB4 وTransfer Learning لتصنيف أمراض النباتات بدقة عالية.",code_btn:"الكود",form_name:"الاسم",form_email:"البريد الإلكتروني",form_message:"الرسالة",form_send:"إرسال"}
 };
 let lang=localStorage.getItem('lang')||'en';
 function setLang(l){lang=l;localStorage.setItem('lang',l);document.documentElement.dir=l==='ar'?'rtl':'ltr';document.documentElement.lang=l;document.getElementById('lang-text').textContent=l==='ar'?'EN':'AR';document.body.style.fontFamily=l==='ar'?"'Cairo',sans-serif":"'Space Grotesk',sans-serif";document.querySelectorAll('[data-lang]').forEach(el=>{const k=el.getAttribute('data-lang');if(T[l][k])el.textContent=T[l][k]})}
