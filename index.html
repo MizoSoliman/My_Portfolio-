@@ -157,7 +157,9 @@ section{padding:96px 0;position:relative;z-index:2}
 
 /* ====== SERVICES SECTION ====== */
 .services-section{background:var(--surface)}
-.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.srv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:1100px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.srv-grid{grid-template-columns:1fr}}
 .srv-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;display:flex;flex-direction:column;gap:18px;transition:all .35s;position:relative;overflow:hidden}
 .srv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .srv-card:hover::before{transform:scaleX(1)}
@@ -320,6 +322,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
 .stagger.on>*:nth-child(5){opacity:1;transform:none;transition-delay:.33s}
 .stagger.on>*:nth-child(6){opacity:1;transform:none;transition-delay:.40s}
 .stagger.on>*:nth-child(7){opacity:1;transform:none;transition-delay:.47s}
+.stagger.on>*:nth-child(8){opacity:1;transform:none;transition-delay:.54s}
 
 @keyframes fade-up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .hero-tag{animation:fade-up .6s .1s both}
@@ -361,8 +364,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
     <a class="nav-link" href="#about" data-lang="nav_about">About</a>
     <a class="nav-link" href="#skills" data-lang="nav_skills">Skills</a>
     <a class="nav-link" href="#projects" data-lang="nav_projects">Projects</a>
-    <a class="nav-link" href="#services" data-lang="nav_services">Services</a>
     <a class="nav-link" href="#certificates" data-lang="nav_cert">Certificates</a>
+    <a class="nav-link" href="#services" data-lang="nav_services">Services</a>
     <a class="nav-link" href="#contact" data-lang="nav_contact">Contact</a>
   </div>
   <div class="nav-controls">
@@ -803,6 +806,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:24px
         <a href="#contact" class="srv-cta"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><span data-lang="srv_btn">Get in Touch</span></a>
       </div>
 
+      <!-- Model Deployment & MLOps -->
+      <div class="srv-card">
+        <div class="srv-ico si4"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span></div>
+        <div class="srv-name" data-lang="srv8_name">Model Deployment & MLOps</div>
+        <div class="srv-desc" data-lang="srv8_desc">Taking trained models from notebooks to production — building interactive web apps and deploying ML pipelines so your model delivers real value to end users.</div>
+        <div class="srv-tags">
+          <span class="srv-tag" style="background:rgba(52,211,153,.1);color:var(--p4);border-color:rgba(52,211,153,.25)">Streamlit</span>
+          <span class="srv-tag" style="background:rgba(52,211,153,.1);color:var(--p4);border-color:rgba(52,211,153,.25)">Docker</span>
+          <span class="srv-tag" style="background:rgba(52,211,153,.1);color:var(--p4);border-color:rgba(52,211,153,.25)">GitHub</span>
+        </div>
+        <a href="#contact" class="srv-cta"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span><span data-lang="srv_btn">Get in Touch</span></a>
+      </div>
       <!-- Data Visualization & Dashboards -->
       <div class="srv-card">
         <div class="srv-ico si5"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 17V13"/><path d="M12 17V7"/><path d="M17 17v-4"/></svg></span></div>
@@ -964,7 +979,8 @@ const T={
     srv4_name:"Generative AI & LLMs",srv4_desc:"Building intelligent applications powered by large language models — including chatbots, RAG pipelines, prompt engineering systems, and custom AI-driven workflows using LangChain and Hugging Face.",
     srv5_name:"Data Visualization & Dashboards",srv5_desc:"Transforming raw data into clear, interactive dashboards and visual reports — helping you understand trends, monitor KPIs, and make data-driven decisions at a glance.",
     srv6_name:"Predictive Analytics",srv6_desc:"Forecasting future outcomes from historical data using statistical models and machine learning — from sales prediction and churn analysis to anomaly detection and risk scoring.",
-    srv7_name:"Data Cleaning & Feature Engineering",srv7_desc:"Turning messy, incomplete datasets into clean, model-ready data — handling missing values, outliers, encoding, scaling, and crafting powerful features that boost model performance."},
+    srv7_name:"Data Cleaning & Feature Engineering",srv7_desc:"Turning messy, incomplete datasets into clean, model-ready data — handling missing values, outliers, encoding, scaling, and crafting powerful features that boost model performance.",
+    srv8_name:"Model Deployment & MLOps",srv8_desc:"Taking trained models from notebooks to production — building interactive web apps and deploying ML pipelines so your model delivers real value to end users."},
   ar:{nav_home:"الرئيسية",nav_about:"نبذة",nav_skills:"المهارات",nav_projects:"المشاريع",nav_cert:"الشهادات",nav_contact:"تواصل",hero_line1:"مهندس علوم بيانات",hero_line2:"وتعلم آلي",hero_desc:"مرحباً، أنا مازن ياسر — متخصص في تحويل البيانات إلى حلول ذكية. خبرة في ML والتعلم العميق والرؤية الحاسوبية والذكاء الاصطناعي التوليدي.",btn_projects:"تصفح المشاريع",btn_contact:"تواصل معي",btn_cv:"تحميل السيرة الذاتية",about_p1:"مرحباً، أنا مازن ياسر، أعمل على تحويل البيانات المعقدة إلى حلول ذكية. متخصص في التعلم الآلي، والتعلم العميق، ورؤية الحاسوب، والذكاء الاصطناعي التوليدي.",about_p2:"خلال العام الماضي عملت على عدة مجموعات بيانات ونفذت حوالي ثلاثة مشاريع متكاملة، شملت جميع المراحل بدايةً من كتابة الكود وتحليل البيانات وحتى نشر المشروع. كما أدرس حاليًا التعلم العميق بهدف تعزيز خبرتي. وأكملت عدة دورات احترافية: علوم البيانات في Epsilon AI، وتعلم الآلة في ITI، وتدريب الذكاء الاصطناعي في مدينة زويل، وتدريب في التعلم العميق — وأدرس حاليًا الذكاء الاصطناعي التوليدي في معهد رواد مصر الرقمية (DEPI).",proj1_title:"التنبؤ بأسعار المنازل في ملبورن",proj1_desc:"حل ML متكامل من تحليل البيانات الخام إلى تطبيق ويب تفاعلي بـ Streamlit للتنبؤ بأسعار العقارات.",proj2_title:"التعرف على أبجدية لغة الإشارة الأمريكية",proj2_desc:"نموذج Deep Learning بـ CNN لتصنيف 36 فئة إيماءة — 26 حرفاً (A–Z) و10 أرقام (0–9).",proj3_title:"لعبة الثعبان المتقدمة بالذكاء الاصطناعي",proj3_desc:"خوارزمية Greedy Best-First Search، مستويات صعوبة ديناميكية، فواكه ذهبية، وحفظ أعلى نتيجة.",proj4_title:"كشف الاحتيال في تأمين السيارات",proj4_desc:"مشروع ML متكامل مع واجهة Streamlit للكشف عن الاحتيال في مطالبات التأمين باستخدام XGBoost.",proj5_title:"كشف أمراض النباتات",proj5_desc:"Deep Learning بـ EfficientNetB4 وTransfer Learning لتصنيف أمراض النباتات بدقة عالية.",code_btn:"الكود",form_name:"الاسم",form_email:"البريد الإلكتروني",form_message:"الرسالة",form_send:"إرسال",
     skills_eyebrow:"الخبرة",skills_title:"المهارات",skills_title2:"التقنية",skills_desc:"التقنيات والأدوات التي أستخدمها يومياً لبناء حلول ذكية.",
     ts_prog_lang:"لغات البرمجة",ts_libs:"المكتبات والأدوات",ts_envs:"البيئات والمنصات",ts_aiml:"مجالات الذكاء الاصطناعي / ML",
@@ -983,7 +999,8 @@ const T={
     srv4_name:"الذكاء الاصطناعي التوليدي و LLMs",srv4_desc:"بناء تطبيقات ذكية مدعومة بنماذج اللغة الكبيرة — تشمل روبوتات المحادثة وأنابيب RAG وأنظمة هندسة الاستدعاء وسير العمل المدفوعة بالذكاء الاصطناعي.",
     srv5_name:"تصوير البيانات ولوحات المعلومات",srv5_desc:"تحويل البيانات الخام إلى لوحات معلومات تفاعلية وتقارير بصرية واضحة — لمساعدتك على فهم الاتجاهات ومراقبة مؤشرات الأداء واتخاذ قرارات مدفوعة بالبيانات.",
     srv6_name:"التحليلات التنبؤية",srv6_desc:"التنبؤ بالنتائج المستقبلية من البيانات التاريخية باستخدام النماذج الإحصائية والتعلم الآلي — من التنبؤ بالمبيعات وتحليل الإلغاء إلى كشف الحالات الشاذة وتقييم المخاطر.",
-    srv7_name:"تنظيف البيانات وهندسة الميزات",srv7_desc:"تحويل مجموعات البيانات الفوضوية وغير المكتملة إلى بيانات نظيفة جاهزة للنماذج — معالجة القيم المفقودة والقيم الشاذة والترميز والتحجيم وابتكار ميزات قوية لتعزيز أداء النماذج."}
+    srv7_name:"تنظيف البيانات وهندسة الميزات",srv7_desc:"تحويل مجموعات البيانات الفوضوية وغير المكتملة إلى بيانات نظيفة جاهزة للنماذج — معالجة القيم المفقودة والقيم الشاذة والترميز والتحجيم وابتكار ميزات قوية لتعزيز أداء النماذج.",
+    srv8_name:"نشر النماذج و MLOps",srv8_desc:"نقل النماذج المدربة من بيئة التطوير إلى الإنتاج — بناء تطبيقات ويب تفاعلية ونشر خطوط ML حتى يقدم نموذجك قيمة حقيقية للمستخدمين النهائيين."}
 };
 let lang=localStorage.getItem('lang')||'en';
 function setLang(l){lang=l;localStorage.setItem('lang',l);document.documentElement.dir=l==='ar'?'rtl':'ltr';document.documentElement.lang=l;document.getElementById('lang-text').textContent=l==='ar'?'EN':'AR';document.body.style.fontFamily=l==='ar'?"'Cairo',sans-serif":"'Space Grotesk',sans-serif";document.querySelectorAll('[data-lang]').forEach(el=>{const k=el.getAttribute('data-lang');if(T[l][k])el.textContent=T[l][k]})}
